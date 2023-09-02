@@ -16,11 +16,15 @@ function themeSV() { "use strict";
     e ? (ls.setItem("theme", c), 
         html.setAttribute(n, c), 
         i.setAttribute("class", "moon"), 
-        i.style.fontSize = '0.85rem', i.style.color = '#4390f3', i.style.textShadow = '1px 0.5px #000080') 
+        i.style.fontSize = '0.85rem', 
+        i.style.color = '#4390f3', 
+        i.style.textShadow = '1px 0.5px #000080') 
       : (ls.setItem("theme", d), 
         html.setAttribute(n, d), 
         i.setAttribute("class", "sun"), 
-        i.style.fontSize = '0.85rem', i.style.color = '#ea7d08', i.style.textShadow = '1.25px 1px #ffc100') 
+        i.style.fontSize = '0.85rem', 
+        i.style.color = '#ea7d08', 
+        i.style.textShadow = '1.25px 1px #ffc100') 
   };    e = o.matches, 
   s === c && (e = !0), 
   s === d && (e = !1), m(e), 
