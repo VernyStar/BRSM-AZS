@@ -8,7 +8,7 @@
           e && n !== e && l(e), l(n), navigator.vibrate(20)
         }
         function l(t) {
-          let n = $.getElementById(t.getAttribute("aria-controls"));
+          let n = document.getElementById(t.getAttribute("aria-controls"));
           "true" === t.getAttribute("aria-expanded") ?
             (t.setAttribute("aria-expanded", !1), n.setAttribute("aria-hidden", !0), e = !1) :
             (t.setAttribute("aria-expanded", !0), n.setAttribute("aria-hidden", !1),
