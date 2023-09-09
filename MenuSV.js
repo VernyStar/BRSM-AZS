@@ -13,7 +13,7 @@
             (t.setAttribute("aria-expanded", !1), n.setAttribute("aria-hidden", !0), e = !1) :
             (t.setAttribute("aria-expanded", !0), n.setAttribute("aria-hidden", !1),
               function t(e) {
-                let n = win.innerWidth || $$.clientWidth || $.body.clientWidth,
+                let n = win.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
                   i = e.offsetParent,
                   r = i.getBoundingClientRect().left,
                   a = r + e.offsetWidth;
@@ -38,7 +38,7 @@
                   let r = e.getElementsByTagName("a")[0],
                     a = r.innerHTML,
                     l = r.attributes,
-                    u = $.createElement("button");
+                    u = document.createElement("button");
                   
                   if (null !== r) {
                     for (n = 0, u.innerHTML = a.trim(), i = l.length; n < i; n++) {
@@ -64,13 +64,13 @@
                 l.addEventListener("click", a),
                   t.addEventListener("keyup", u)
               }
-            }), $.addEventListener("click", d)
+            }), document.addEventListener("click", d)
         }
       };
       
-      $.addEventListener("DOMContentLoaded",
+      document.addEventListener("DOMContentLoaded",
         function() {
-          let e = $.querySelectorAll(".menuSV");
+          let e = document.querySelectorAll(".menuSV");
           e.forEach(e => {
             new MenuSV(e).init()
           })
