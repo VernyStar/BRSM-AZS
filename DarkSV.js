@@ -1,6 +1,11 @@
 doc.body.style.cssText = 'position:relative;display:flex;flex-flow:column nowrap;height:100vh;width:100%;font:15px/1.25 "Alice";overflow:hidden';
 doc.body.style.background = `url('${patbg}') repeat-y`;
 doc.body.style.backgroundSize = 'cover';
+const _ = doc.documentElement;
+const $$$ = doc.querySelectorAll.bind(doc);
+const $ = doc.getElementById.bind(doc);
+const $$ = doc.querySelector.bind(doc);
+const db = doc.body;
 const hp = $("DIM");
 const tp = $("DER");
 const fp = $("FBF");
