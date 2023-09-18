@@ -1,0 +1,883 @@
+*,
+*::after,
+*::before {
+   -webkit-tap-highlight-color: transparent;
+   -webkit-box-sizing: border-box;
+           box-sizing: border-box;
+      text-decoration: none;
+      list-style: none;
+      background: none;
+      outline: none;
+   border: none;
+   margin: 0;
+   padding: 0
+}
+
+[data-current="true"] {
+   visibility: visible;
+   transition: 0.25s ease-in;
+   transform: scale(1)
+}
+
+[data-current="false"] {
+   visibility: hidden;
+   transition: 0.25s ease-in;
+   transform: scale(0)
+}
+
+html {
+   height: 100vh;
+   overflow: hidden;
+   -webkit-text-size-adjust: 100%;
+      -moz-text-size-adjust: 100%;
+       -ms-text-size-adjust: 100%;
+           text-size-adjust: 100%;
+            color: var(--main-fc);
+            font: var(--main-ff);
+   -moz-osx-font-smoothing: grayscale;
+   -webkit-font-smoothing: antialiased;
+      -webkit-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none
+}
+
+.opacity {
+   opacity: 0.03;
+   transition: opacity 0.3s ease-in;
+}
+
+body::after {
+    background-color: hsla(46, 0%, 0%, 0.55);
+    content: "";
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+}
+
+/*** Сторінка "Моя карта" ***/
+
+.card-page {
+    position: fixed;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: column nowrap;
+        flex-flow: column nowrap;
+    top: 0; right: 0;
+    bottom: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-transition: opacity 0.3s ease-in;
+            transition: opacity 0.3s ease-in;
+}
+
+/*** Хедер ***/
+
+header {
+    position: relative;
+    height: 5.75rem;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row nowrap;
+            flex-flow: row nowrap;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+        align-items: flex-start
+}
+
+.logo {
+    display: block;
+    position: relative;
+    width: 32.5%;
+    height: 77.5%;
+    background-size: cover;
+    max-width: 8.75rem
+}
+
+.barcode {
+    height: 1.35rem;
+    width: 25%;
+    position: absolute;
+    display: block;
+    bottom: 0;
+    right: 0;
+    opacity: 0.8
+}
+
+/*** Бургер-Меню ***/
+
+.burger {
+    position: fixed;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 2.75rem;
+    height: 2.9rem;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    top: 0.5rem; left: 0.55rem;
+    cursor: pointer;
+    color: hsla(47, 100%, 50%, 1);
+    z-index: 999
+}
+
+.burger.active {
+    left: 0.85rem;
+    top: 0.75rem
+}
+
+svg {
+   scale: 2;
+    -webkit-transition: -webkit-transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: -webkit-transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+svg g {
+    stroke-width: 8;
+}
+
+svg g path {
+    stroke: hsl(46, 100%, 50%);
+}
+
+path {
+    -webkit-transition: stroke-dasharray 400ms cubic-bezier(0.4, 0, 0.2, 1), stroke-dashoffset 400ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: stroke-dasharray 400ms cubic-bezier(0.4, 0, 0.2, 1), stroke-dashoffset 400ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
+    -webkit-transition: stroke-dasharray 400ms cubic-bezier(0.4, 0, 0.2, 1), stroke-dashoffset 400ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: stroke-dasharray 400ms cubic-bezier(0.4, 0, 0.2, 1), stroke-dashoffset 400ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1), stroke-dasharray 400ms cubic-bezier(0.4, 0, 0.2, 1), stroke-dashoffset 400ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1), stroke-dasharray 400ms cubic-bezier(0.4, 0, 0.2, 1), stroke-dashoffset 400ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1), stroke-dasharray 400ms cubic-bezier(0.4, 0, 0.2, 1), stroke-dashoffset 400ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+path:nth-child(1) {
+    -webkit-transform-origin: 36% 40%;
+    -ms-transform-origin: 36% 40%;
+    transform-origin: 36% 40%;
+}
+
+path:nth-child(2) {
+    stroke-dasharray: 29 299;
+}
+
+path:nth-child(3) {
+    -webkit-transform-origin: 35% 63%;
+    -ms-transform-origin: 35% 63%;
+    transform-origin: 35% 63%;
+}
+
+path:nth-child(4) {
+    stroke-dasharray: 29 299;
+}
+
+path:nth-child(5) {
+    -webkit-transform-origin: 61% 52%;
+    -ms-transform-origin: 61% 52%;
+    transform-origin: 61% 52%;
+}
+
+path:nth-child(6) {
+    -webkit-transform-origin: 62% 52%;
+    -ms-transform-origin: 62% 52%;
+    transform-origin: 62% 52%;
+}
+
+.burger.active svg g path {
+    stroke: hsl(208, 100%, 97%);
+}
+
+.burger.active svg g {
+    stroke-width: 10;
+}
+
+.burger.active svg {
+    background: radial-gradient(circle at center, hsla(358, 88%, 48%, 1) 40%, transparent 40.1%);
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+    scale: 1.1
+}
+
+.burger.active path {
+    -webkit-transition: 350ms;
+    transition: 350ms;
+}
+
+.burger.active path:nth-child(1) {
+    -webkit-transform: translateX(9px) translateY(1px) rotate(45deg);
+    -ms-transform: translateX(9px) translateY(1px) rotate(45deg);
+    transform: translateX(9px) translateY(1px) rotate(45deg);
+}
+
+.burger.active path:nth-child(2) {
+    stroke-dasharray: 225 299;
+    stroke-dashoffset: -72px;
+}
+
+.burger.active path:nth-child(3) {
+    -webkit-transform: translateX(9px) translateY(1px) rotate(-45deg);
+    -ms-transform: translateX(9px) translateY(1px) rotate(-45deg);
+    transform: translateX(9px) translateY(1px) rotate(-45deg);
+}
+
+.burger.active path:nth-child(4) {
+    stroke-dasharray: 225 299;
+    stroke-dashoffset: -72px;
+}
+
+.burger.active path:nth-child(5) {
+    -webkit-transform: translateX(9px) translateY(1px) rotate(-45deg);
+    -ms-transform: translateX(9px) translateY(1px) rotate(-45deg);
+    transform: translateX(9px) translateY(1px) rotate(-45deg);
+}
+
+.burger.active path:nth-child(6) {
+    -webkit-transform: translateX(9px) translateY(1px) rotate(45deg);
+    -ms-transform: translateX(9px) translateY(1px) rotate(45deg);
+    transform: translateX(9px) translateY(1px) rotate(45deg);
+}
+
+/*** Меню ***/
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.85);
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.mobile-menu {
+    width: 55%;
+    height: 100%;
+    position: fixed;
+    background: #090d12;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column nowrap;
+            flex-flow: column nowrap;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: start;
+    -webkit-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+            transform: translateX(-100%);
+    -webkit-transition: -webkit-transform 0.3s ease-out;
+    transition: -webkit-transform 0.3s ease-out;
+    transition: transform 0.3s ease-out;
+    transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
+    padding: 5rem 0;
+    z-index: 2
+}
+
+.mobile-menu a i {
+    font-size: 1.35rem;
+    color: hsla(57, 46%, 66%, 0.87);
+    text-align: center;
+    width: 1.5rem;
+}
+
+.mobile-menu a {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    margin: 1rem 0;
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 0.45rem 0 0.35rem 1.2rem;
+}
+
+.mobile-menu a span {
+    position: relative;
+    margin-left: 0.75rem;
+}
+
+.mobile-menu a:hover {
+    border-left: 4px solid #fff;
+}
+
+.mobile-menu_open {
+    -webkit-transform: translateX(0%);
+        -ms-transform: translateX(0%);
+            transform: translateX(0%);
+    -webkit-box-shadow: 0 0 2rem #000;
+            box-shadow: 0 0 2rem #000;
+}
+
+.mobile-menu_open + .overlay {
+    visibility: visible;
+    opacity: 1;
+}
+
+/*** Секція зі сводом правил ***/
+
+.rules {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 62.5%;
+    color: hsla(47, 100%, 50%, 1);
+    text-align: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    height: rem;
+    -ms-flex-item-align: start;
+        align-self: flex-start
+}
+
+.rules img {
+    height: 3rem;
+    position: relative;
+    margin-bottom: .3rem
+}
+
+.rules p {
+    position: relative;
+    font: normal 600 0.7rem/1.5 "Tektur";
+    border-bottom: 1px solid hsla(47, 100%, 50%, 1);
+    border-bottom-right-radius: 2.5rem;
+    padding-bottom: .35rem;
+    margin-left: 0.15rem;
+    padding-right: 0.6rem;
+    -ms-flex-item-align: end;
+        align-self: flex-end;
+    margin-bottom: .45rem;
+}
+
+.card-page main {
+    width: 100%;
+    height: calc(100% - 11rem);
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column nowrap;
+            flex-flow: column nowrap;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    padding: 0 1rem;
+    -webkit-transition: opacity 0.3s ease-in;
+    transition: opacity 0.3s ease-in;
+}
+
+.card-page main .card {
+    width: 80%;
+    border-radius: 20px;
+    background: hsla(226, 5%, 11%, 1);
+    padding: 8px;
+    border: 1px solid hsla(46, 98%, 53%, 1);
+    overflow: hidden;
+    -webkit-box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 20px 0px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 20px 0px;
+    -webkit-transition: -webkit-transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: -webkit-transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), -webkit-transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card:hover {
+    -webkit-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
+}
+
+.card .top-section {
+    height: 180px;
+    border-radius: 15px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    background: url("/W/ barcode.png") center bottom no-repeat hsla(51, 100%, 95%, 1);
+    background-size: 92%;
+    position: relative;
+}
+
+.plus {
+    position: absolute;
+    right: 0;
+    top: 0.5rem;
+    width: 45%;
+    font-family: "Black Ops One";
+    font-weight: 350;
+    font-size: 1.2rem;
+    color: hsla(235, 6%, 23%, 1);
+    opacity: 40%
+}
+
+.card .top-section .border {
+    border-bottom-right-radius: 10px;
+    height: 30px;
+    width: 130px;
+    background: white;
+    background: hsla(226, 5%, 11%, 1);
+    position: relative;
+    -webkit-transform: skew(-40deg);
+    -ms-transform: skew(-40deg);
+    transform: skew(-40deg);
+    -webkit-box-shadow: -10px -10px 0 0 hsla(226, 5%, 11%, 1);
+    box-shadow: -10px -10px 0 0 hsla(226, 5%, 11%, 1);
+}
+
+.card .top-section .border::before {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    top: 0;
+    right: -15px;
+    background: rgba(255, 255, 255, 0);
+    border-top-left-radius: 10px;
+    -webkit-box-shadow: -5px -5px 0 2px hsla(226, 5%, 11%, 1);
+    box-shadow: -5px -5px 0 2px hsla(226, 5%, 11%, 1);
+}
+
+.card .top-section::before {
+    content: "";
+    position: absolute;
+    top: 30px;
+    left: 0;
+    background: rgba(255, 255, 255, 0);
+    height: 15px;
+    width: 15px;
+    border-top-left-radius: 15px;
+    -webkit-box-shadow: -5px -5px 0 2px hsla(226, 5%, 11%, 1);
+    box-shadow: -5px -5px 0 2px hsla(226, 5%, 11%, 1);
+}
+
+.card .top-section .icons {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 30px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.card .top-section .icons .logo {
+    height: 100%;
+    aspect-ratio: 1;
+    padding: 7px 0 7px 15px;
+}
+
+.card .top-section .icons .logo .top-section {
+    height: 100%;
+}
+
+.card .top-section .icons .social-media {
+    height: 100%;
+    padding: 3px 10px;
+    color: hsla(46, 100%, 97%, 1);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 7px;
+}
+
+.card .top-section .icons .social-media .svg {
+    height: 100%;
+    fill: #1b233d;
+}
+
+.card .top-section .icons .social-media .svg:hover {
+    fill: white;
+}
+
+.card .bottom-section {
+    height: 30%;
+    padding: 10px 5px;
+}
+
+.card .bottom-section .title {
+    display: block;
+    font-family: "Tektur";
+    font-size: 1.35rem;
+    font-weight: bolder;
+    color: hsla(46, 100%, 50%, 1);
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.card .bottom-section .row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.card .bottom-section .row .item {
+    -webkit-box-flex: 30%;
+    -ms-flex: 30%;
+    flex: 30%;
+    text-align: center;
+    padding: 5px;
+    color: rgba(170, 222, 243, 0.721);
+}
+
+.card .bottom-section .row .item .big-text {
+    font-size: 10px;
+    display: block;
+    font-family: "Orbitron"
+}
+
+.card .bottom-section .row .item .regular-text {
+    font-size: 10px;
+}
+
+.card .bottom-section .row .item:nth-child(2) {
+    border-left: 1px solid rgba(255, 255, 255, 0.126);
+    border-right: 1px solid rgba(255, 255, 255, 0.126);
+}
+
+.card-page .account span img {
+    position: relative;
+    width: 100%;
+    height: 100;
+    border-radius: 100%;
+}
+
+.user-info {
+    color: hsla(57, 100%, 97%, 0.97);
+    font-family: "Alice";
+    text-transform: uppercase;
+    font-size: 0.85rem
+}
+
+
+.card-page .account {
+    position: relative;
+    width: 100%;
+    -ms-flex-item-align: center;
+        align-self: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column nowrap;
+            flex-flow: column nowrap;
+    gap: 1.1rem
+}
+
+.card-page .account span {
+    background-color: hsla(249, 12%, 0%, .98);
+    background-image: url("https://i.postimg.cc/ZRmc5dcf/IMG-20230905-011244.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 3px solid hsla(0, 0%, 100%, .2);
+    border-radius: 100%;
+    width: 7.5rem;
+    text-align: center;
+    height: 7.25rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    cursor: pointer;
+    overflow: hidden;
+    margin-top: -1rem;
+}
+
+.fa-pen-to-square {
+    margin-right: .5rem;
+    opacity: .6
+}
+
+.card-page .account .name-acct {
+    position: relative;
+    color: orange;
+    font: bolder 1.25rem/1.2 "Tektur";
+    margin-inline: auto;
+    word-spacing: 0.3rem;
+    white-space: nowrap;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+/*** Футер ***/
+
+.card-page footer {
+    position: relative;
+    -ms-flex-item-align: end;
+        align-self: flex-end;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%
+}
+
+@media (orientation: portrait) {
+    footer {
+        height: 4.75rem;
+    }
+}
+
+@media (orientation: landscape) {
+    body {
+        background: var(--main-bg);
+        background-size: 20% 30%;
+    }
+
+    footer {
+        height: 4.25rem;
+        background-size: 40% 90%;
+    }
+}
+
+/*** Картинки ***/
+
+.turbo {
+    position: fixed;
+    display: block;
+    width: 8.75rem;
+    height: 3.8rem;
+    bottom: 5rem;
+    right: 0;
+    background: url("https://i.postimg.cc/brgD9G1w/1693845773307.png") center no-repeat;
+    background-size: 95% 95%;
+    background-repeat: no-repeat;
+    outline: none;
+    z-index: 1;
+    -webkit-transition: opacity 0.3s ease-in;
+    transition: opacity 0.3s ease-in;
+}
+
+html.modal-active,
+body.modal-active {
+   overflow: hidden;
+}
+
+#modal-container {
+   position: fixed;
+   display: table;
+   height: 100%;
+   width: 100%;
+   top: 0;
+   left: 0;
+   transform: scale(0);
+   z-index: 1;
+}
+
+
+#modal-container.one {
+   transform: scaleY(0.01) scaleX(0);
+   animation: unfoldIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+#modal-container.one .modal-background .modal {
+   transform: scale(0);
+   animation: zoomIn 0.5s 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+#modal-container.one.out {
+   transform: scale(1);
+   animation: unfoldOut 1s 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+#modal-container.one.out .modal-background .modal {
+   animation: zoomOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container .modal-background {
+   display: table-cell;
+   background: hsla(57, 100%, 84%, 0.8);
+   text-align: center;
+   vertical-align: middle;
+}
+
+#modal-container .modal-background .modal {
+   background: white;
+   padding: 50px;
+   display: inline-block;
+   border-radius: 3px;
+   font-weight: 300;
+   position: relative;
+}
+
+.content {
+   min-height: 100%;
+   height: 100%;
+   background: white;
+   position: relative;
+   z-index: 0;
+}
+
+#modal-container.one .modal-background .modal {
+   background: hsla(46, 100%, 50%, 1);
+   padding: 20px;
+   display: inline-block;
+   width: 100%;
+   height: 100%;
+   border-radius: 8px;
+   font-weight: 300;
+   top: 0;
+   position: fixed;
+}
+
+#modal-container.seven .modal-background .modal {
+   background: hsla(46, 100%, 50%, 1);
+   padding: 20px;
+   display: inline-block;
+   height: 20%;
+   width: 60%;
+   border-radius: 8px;
+   font-weight: 300;
+   top: 40%;
+   position: fixed;
+   left: 20%
+}
+
+#modal-container .modal-background .modal h2 {
+   font-size: 25px;
+   line-height: 25px;
+   margin-bottom: 15px;
+}
+
+#modal-container .modal-background .modal p {
+   font-size: 18px;
+   line-height: 22px;
+}
+
+#modal-container .modal-background .modal .modal-svg {
+   position: absolute;
+   top: 0;
+   left: 0;
+   height: 100%;
+   width: 100%;
+   border-radius: 3px;
+}
+
+#modal-container .modal-background .modal .modal-svg rect {
+   stroke: #fff;
+   stroke-width: 2px;
+   stroke-dasharray: 778;
+   stroke-dashoffset: 778;
+}
+
+.content h1 {
+   padding: 75px 0 30px 0;
+   text-align: center;
+   font-size: 30px;
+   line-height: 30px;
+}
+@keyframes unfoldIn {
+   0% {
+      transform: scaleY(0.005) scaleX(0);
+   }
+
+   50% {
+      transform: scaleY(0.005) scaleX(1);
+   }
+
+   100% {
+      transform: scaleY(1) scaleX(1);
+   }
+}
+
+@keyframes unfoldOut {
+   0% {
+      transform: scaleY(1) scaleX(1);
+   }
+
+   50% {
+      transform: scaleY(0.005) scaleX(1);
+   }
+
+   100% {
+      transform: scaleY(0.005) scaleX(0);
+   }
+}
+
+@keyframes zoomIn {
+   0% {
+      transform: scale(0);
+   }
+
+   100% {
+      transform: scale(1);
+   }
+}
+
+@keyframes zoomOut {
+   0% {
+      transform: scale(1);
+   }
+
+   100% {
+      transform: scale(0);
+   }
+}
