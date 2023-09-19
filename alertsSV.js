@@ -3,9 +3,9 @@ const $ = document.querySelector.bind(document);
 var warning = "Користувач має бути адміном";
 var uspih = "Оновлено статус учасника";
 var inform = "Користувач очікує на дію";
-var danger = 'Внутрішня помилка на сервері';
-var a1 = _('button');
-a1.type = 'button';
+var danger = "Внутрішня помилка на сервері";
+var a1 = _("button");
+a1.type = "button";
 a1.innerHTML = `
     <button class="button">Натискай</button>`;
 document.body.appendChild(a1);
